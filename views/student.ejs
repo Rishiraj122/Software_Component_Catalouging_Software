@@ -1,0 +1,179 @@
+<!-- Changes Made from here -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Component Cataloging Software</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: white;
+            color: black;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            background-color: #333;
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #333; /* Change to header color */
+            color: white; /* Change to header text color */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        li div {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        li strong {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        li span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        form.logout-form {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Software Component Cataloging Software</h1>
+        <form action="/logout" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </header>
+
+    <!-- Search Form -->
+    <form action="/search" method="get">
+        <label for="search" style="padding-top: 5%;">Search by Title or Tag:</label>
+        <input type="text" id="search" name="search" placeholder="Enter title or tag">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        <% components.forEach(component => { %>
+            <li>
+                <div>
+                    <strong>Title:</strong><span><%= component.title %></span><br>
+                    <strong>Tag:</strong><span><%= component.tag %></span>
+                </div>
+                
+                <div>
+                    <strong>Code:</strong>
+                    <pre><%= component.code %></pre>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+
+    <form action="/addcomponent" method="get">
+        <button style="margin-bottom: 5%;">Add Component</button>
+    </form>
+
+    <footer>
+        &copy; 2023 Software Component Cataloging Software
+    </footer>
+</body>
+</html>
+
